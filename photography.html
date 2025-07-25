@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura Events | Wedding Photography Kerala</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <!-- favicon -->
+<link rel="icon" href="./images/auraevents.png" type="image/x-icon">
+  <!-- Alpine.js for dropdowns -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <style>
+      
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+    h1, h2, h3, .brand {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+    }
+    .text-royal {
+      color: #D8B4F8;
+    }
+    .bg-royal {
+      background-color: #4A2545;
+    }
+    .bg-royal-dark {
+      background-color: #2D1B2B;
+    }
+    .bg-royal-gradient {
+      background: linear-gradient(135deg, #4A2545 0%, #7A3B6E 50%, #C86FC9 100%);
+    }
+    .event-card {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    }
+    .hover-grow {
+      transition: all 0.3s ease;
+    }
+    .hover-grow:hover {
+      transform: scale(1.05);
+    }
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      z-index: 0;
+    }
+    .video-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .video-overlay {
+      position: relative;
+      z-index: 1;
+    }
+
+      @keyframes zoomInSlow {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
+  .zoom-animation {
+    animation: zoomInSlow 4s ease-in-out forwards;
+  }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#f4f1fa] via-[#fdf3fa] to-[#f4ecf9] text-gray-800">
+
+  <!-- Navbar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur-md shadow-md border-b border-white/20">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Left Logo and Brand -->
+    <div class="flex items-center gap-x-4">
+      <img src="./images/auraevents.png" width="60" height="60" class="rounded-full hover:scale-105 transition-transform duration-300" alt="Aura Events Logo">
+      <div class="text-3xl font-bold text-purple-800">Aura Events</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex space-x-6 text-base items-center" x-data="{ servicesOpen: false, galleryOpen: false }">
+      <a href="index.html" class="hover:underline hover:text-purple-500 transition-colors">Home</a>
+      <a href="#about" class="hover:underline hover:text-purple-500 transition-colors">About</a>
+
+      <!-- Services Dropdown -->
+      <div class="relative" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
+        <button class="hover:underline hover:text-purple-500 transition-colors">Services</button>
+        <div x-show="servicesOpen" x-transition class="absolute top-full left-0 mt-2 w-56 bg-royal-dark text-white rounded shadow-lg border border-purple-600 z-50">
+          <a href="birthday.html" class="block px-4 py-2 hover:bg-purple-700">Birthday Parties</a>
+          <a href="photography.html" class="block px-4 py-2 hover:bg-purple-700">Photography Sessions</a>
+          <a href="wedding.html" class="block px-4 py-2 hover:bg-purple-700">Weddings</a>
+          <a href="corporate.html" class="block px-4 py-2 hover:bg-purple-700">Corporate Events</a>
+          <a href="workshop.html" class="block px-4 py-2 hover:bg-purple-700">Workshops & Seminars</a>
+        </div>
+      </div>
+
+      <!-- Gallery Dropdown -->
+      <div class="relative" @mouseenter="galleryOpen = true" @mouseleave="galleryOpen = false">
+        <button class="hover:underline hover:text-purple-500 transition-colors">Gallery</button>
+        <div x-show="galleryOpen" x-transition class="absolute top-full left-0 mt-2 w-56 bg-royal-dark text-white rounded shadow-lg border border-purple-600 z-50">
+          <a href="#photo-gallery" class="block px-4 py-2 hover:bg-purple-700">Photo Gallery</a>
+          <a href="#video-gallery" class="block px-4 py-2 hover:bg-purple-700">Video Gallery</a>
+          <a href="#shorts-gallery" class="block px-4 py-2 hover:bg-purple-700">Shorts Gallery</a>
+          <a href="#wedding-albums" class="block px-4 py-2 hover:bg-purple-700">Wedding Albums</a>
+        </div>
+      </div>
+
+      <a href="booking.html" class="hover:underline hover:text-purple-500 transition-colors">Booking</a>
+      <a href="contact.html" class="hover:underline hover:text-purple-500 transition-colors">Contact</a>
+      <a href="login.html" class="hover:underline hover:text-purple-500 transition-colors">Login</a>
+      <a href="register.html" class="hover:underline hover:text-purple-500 transition-colors">Register</a>
+    </nav>
+  </div>
+</header>
+
+  <section class="mt-24 text-center py-16 relative bg-gradient-to-r from-purple-100 via-pink-50 to-purple-50 overflow-hidden">
+  
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20250618/pngtree-romantic-wedding-rings-with-spring-blossoms-image_17437306.jpg')] bg-cover bg-center "></div>
+  
+  <!-- Content Overlay -->
+  <div class="relative z-10">
+    <h2 class="text-4xl font-bold text-royal-400 mb-4">Best Wedding Photography in Kerala</h2>
+    <p class="max-w-2xl mx-auto text-lg text-white-700">Capture your timeless moments with Aura Events – the perfect blend of elegance, culture, and cinematic style.</p>
+    
+    <div class="mt-6 space-x-4">
+      <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-3 rounded-md">Call Us</a>
+      <a href="#contact" class="bg-pink-500 hover:bg-pink-600 text-white px-5 py-3 rounded-md">Talk to Our Expert</a>
+    </div>
+  </div>
+  
+</section>
+
+<section class="py-16 px-4 bg-gray-100 text-gray-800" id="services">
+  <div class="max-w-7xl mx-auto text-center mb-10">
+    <h2 class="text-4xl font-bold mb-4">What We Offer</h2>
+    <p class="text-lg text-gray-600">Capturing your wedding story with elegance, creativity, and culture</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    
+    <!-- Card 1 -->
+    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+      <img src="https://amabyaisha.com/wp-content/uploads/2023/09/KSc3_037_7026-1024x683.jpg" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Candid Wedding Photography</h3>
+        <ul class="text-gray-600 list-disc list-inside space-y-1">
+          <li>💫 Natural, unposed moments full of raw emotion</li>
+          <li>💫 Perfect for couples who want real memories</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+      <img src="https://eventsmanagementkerala.com/wp-content/uploads/2025/03/new-image.webp" alt="Traditional Wedding Photography" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Traditional Wedding Photography</h3>
+        <ul class="text-gray-600 list-disc list-inside space-y-1">
+          <li>📿 All rituals and customs beautifully captured</li>
+          <li>📿 Perfect for cultural weddings</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+      <img src="https://i.pinimg.com/736x/ae/c4/69/aec4698dcbc71a0580e47ff76a1f4dc3.jpg" alt="Cinematic Wedding Videography" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Cinematic Wedding Videography</h3>
+        <ul class="text-gray-600 list-disc list-inside space-y-1">
+          <li>🎬 Film-style slow-mos & drone shots</li>
+          <li>🎬 Perfect for trailer-style wedding films</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+      <img src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2024/06/Perfect-Destination-Wedding-In-Thailand.png" alt="Destination Wedding Photography" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Destination Wedding Photography</h3>
+        <ul class="text-gray-600 list-disc list-inside space-y-1">
+          <li>🌴 Locations: Wayanad, Munnar, Alleppey</li>
+          <li>🏞️ Full scenic coverage & travel support</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+      <img src="https://images.squarespace-cdn.com/content/v1/5c2db4029772aebeba129860/1631875218540-ALBBR5AMF1B9PAZ6B5KS/4c54e106d00b23ea9f75afbd4e63b8f5-medium.jpg" alt="Pre-Wedding Shoots" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Pre-Wedding & Post-Wedding Shoots</h3>
+        <ul class="text-gray-600 list-disc list-inside space-y-1">
+          <li>💑 Beach, hill, or urban vibes</li>
+          <li>📍 Locations across Kerala</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+      <img src="https://wevaphotography.com/wp-content/uploads/2021/12/amazing-pre-wedding-pictures-..jpg" alt="Bridal & Groom Portraits" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Bridal & Groom Portraits</h3>
+        <ul class="text-gray-600 list-disc list-inside space-y-1">
+          <li>👰 Regal bridal glam with natural light</li>
+          <li>🤵 Groom portraits with cultural flair</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+      <img src="https://knotstories.in/wp-content/uploads/2024/02/image8-1.webp" alt="Drone Wedding Coverage" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Drone Wedding Coverage</h3>
+        <ul class="text-gray-600 list-disc list-inside space-y-1">
+          <li>🚁 Stunning aerial views of your venue</li>
+          <li>📹 Licensed drone professionals</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+      <img src="https://static.toiimg.com/thumb/imgsize-23456,msid-122004033,width-600,resizemode-4/p2-ss-istock-905863138.jpg" alt="Wedding Albums" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Wedding Albums & Keepsakes</h3>
+        <ul class="text-gray-600 list-disc list-inside space-y-1">
+          <li>📖 Glossy, matte, or leather albums</li>
+          <li>📲 Digital access & cloud backup</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Card 9 -->
+<div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
+  <img src="https://weddingservices.co.in/wsimages/1649158395_WEDDING%20PHOTOGRAPHY%20IN%20HYDERABAD.jpg" alt="Reception Photography" class="w-full h-48 object-cover">
+  <div class="p-6">
+    <h3 class="text-xl font-semibold mb-2">Reception Photography & Videography</h3>
+    <ul class="text-gray-600 list-disc list-inside space-y-1">
+      <li>🎉 Capturing fun, laughter & performances</li>
+      <li>🎥 Full HD video coverage with highlight reels</li>
+    </ul>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+
+  <section id="why-aura" class="py-20 px-4 text-gray-800 bg-[url('https://addyevents.in/wp-content/uploads/2025/07/NRI-WEdding-Planner-.jpg')] bg-cover bg-center bg-no-repeat bg-fixed">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-purple-800 mb-12">Why Choose Aura Events?</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Card 1 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition duration-300">
+        <div class="w-12 h-12 bg-purple-200 text-purple-800 rounded-full flex items-center justify-center mb-4 text-xl font-bold">1</div>
+        <h3 class="text-xl font-semibold mb-2">Understand Your Vision</h3>
+        <p class="text-gray-600">We consult with you to deeply understand your preferences, style, and event goals—be it photography, themes, or vibe.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition duration-300">
+        <div class="w-12 h-12 bg-purple-200 text-purple-800 rounded-full flex items-center justify-center mb-4 text-xl font-bold">2</div>
+        <h3 class="text-xl font-semibold mb-2">Curated Photographer Matching</h3>
+        <p class="text-gray-600">We shortlist the best professional photographers who match your aesthetic and are available on your dates.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition duration-300">
+        <div class="w-12 h-12 bg-purple-200 text-purple-800 rounded-full flex items-center justify-center mb-4 text-xl font-bold">3</div>
+        <h3 class="text-xl font-semibold mb-2">Transparent Pricing & Booking</h3>
+        <p class="text-gray-600">We discuss clear pricing options, packages, and finalize bookings based on your budget and comfort.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition duration-300">
+        <div class="w-12 h-12 bg-purple-200 text-purple-800 rounded-full flex items-center justify-center mb-4 text-xl font-bold">4</div>
+        <h3 class="text-xl font-semibold mb-2">Consultations & Portfolio Review</h3>
+        <p class="text-gray-600">You meet your photographers for concept discussion, theme planning, and visual direction alignment.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition duration-300">
+        <div class="w-12 h-12 bg-purple-200 text-purple-800 rounded-full flex items-center justify-center mb-4 text-xl font-bold">5</div>
+        <h3 class="text-xl font-semibold mb-2">Logistics & Shoot Coordination</h3>
+        <p class="text-gray-600">We create detailed timelines, manage shoot locations, and handle last-minute requests professionally.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition duration-300">
+        <div class="w-12 h-12 bg-purple-200 text-purple-800 rounded-full flex items-center justify-center mb-4 text-xl font-bold">6</div>
+        <h3 class="text-xl font-semibold mb-2">Final Quality Review</h3>
+        <p class="text-gray-600">After the event, we ensure you receive high-quality edited outputs that exceed your expectations.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+ <section class="relative py-20 text-white">
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-[url('https://cdn.media.amplience.net/i/canon/canon-pro-sanjay-eos-r-1-1140?$og-image$')] bg-cover bg-center "></div>
+  
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+    <h2 class="text-4xl font-bold mb-4 text-white">How to Plan Your Wedding Photography Budget</h2>
+    <p class="text-lg mb-12 text-gray-200">
+      Make sure your big day is beautifully captured by allocating your budget wisely. From selecting the right photographers to choosing deliverables, here's how to invest smartly.
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Card 1 -->
+      <div class="bg-white bg-opacity-90 rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300 text-gray-800">
+        <div class="w-12 h-12 bg-purple-200 text-purple-800 rounded-full flex items-center justify-center mb-4 text-xl font-bold">01</div>
+        <h3 class="text-xl font-semibold mb-2">Budget Allocation</h3>
+        <p>Allocate around 20% of your total wedding budget for professional photography (minimum 14%).</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white bg-opacity-90 rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300 text-gray-800">
+        <div class="w-12 h-12 bg-purple-200 text-purple-800 rounded-full flex items-center justify-center mb-4 text-xl font-bold">02</div>
+        <h3 class="text-xl font-semibold mb-2">Choose the Style</h3>
+        <p>Select a photography style that fits your vibe—candid, traditional, or cinematic.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white bg-opacity-90 rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300 text-gray-800">
+        <div class="w-12 h-12 bg-purple-200 text-purple-800 rounded-full flex items-center justify-center mb-4 text-xl font-bold">03</div>
+        <h3 class="text-xl font-semibold mb-2">Select Key Deliverables</h3>
+        <p>Pick your deliverables—albums, highlight reels, or full-length films to relive the memories.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-white bg-opacity-90 rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300 text-gray-800">
+        <div class="w-12 h-12 bg-purple-200 text-purple-800 rounded-full flex items-center justify-center mb-4 text-xl font-bold">04</div>
+        <h3 class="text-xl font-semibold mb-2">Hire Local Experts</h3>
+        <p>Go local—hiring Kerala-based photographers can offer better coordination and save costs.</p>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-12">
+      <a href="#contact" class="inline-block px-8 py-3 bg-purple-700 text-white text-lg font-medium rounded-full shadow-md hover:bg-purple-800 transition duration-300">
+        Talk to an Expert
+      </a>
+    </div>
+  </div>
+</section>
+
+  <section id="contact" class="bg-gradient-to-r from-purple-200 to-pink-100 py-20 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+    
+    <!-- Image Column -->
+    <div class="flex justify-center">
+      <img src="https://lifestyleasia.com/ind/wp-content/uploads/2019/12/56786340_166425301032922_2593018590135917383_n-1024x1024.jpg" alt="Contact Us" class="rounded-xl shadow-lg w-full max-w-md">
+    </div>
+
+    <!-- Content Column -->
+    <div class="text-center md:text-left">
+      <h3 class="text-3xl font-bold text-purple-800 mb-4">Let's Capture Your Love Story</h3>
+      <p class="text-lg text-gray-700 mb-6">Call us or message to begin your wedding journey with Aura.</p>
+      
+      <div class="space-y-4">
+        <p class="text-xl text-purple-700 font-semibold">📞 +91-859-001-0011</p>
+        <p class="text-gray-700">📧 auraevents@gmail.com</p>
+        
+        <div class="space-x-4 mt-4">
+          <a href="#" class="text-purple-600 underline hover:text-purple-800 transition">Instagram</a>
+          <a href="#" class="text-purple-600 underline hover:text-purple-800 transition">Facebook</a>
+          <a href="#" class="text-purple-600 underline hover:text-purple-800 transition">YouTube</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+ <!-- footer -->
+
+ <footer class="bg-royal text-white pt-16 pb-8 px-6">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 sm:grid-cols-2 gap-10">
+
+    <!-- Company Info -->
+    <div>
+      <h4 class="text-xl font-semibold mb-4 text-pink-300">Aura Events</h4>
+      <p class="text-sm text-gray-300">
+        Planning a full event has never been easier! Aura® Event Management offers premium services for destination weddings, corporate events, and private celebrations across Kerala.
+      </p>
+      <div class="flex space-x-4 mt-4">
+        <a href="#" aria-label="Instagram" class="hover:text-pink-400">Instagram</a>
+        <a href="#" aria-label="YouTube" class="hover:text-pink-400">YouTube</a>
+        <a href="#" aria-label="Facebook" class="hover:text-pink-400">Facebook</a>
+    
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Quick Links</h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="#" class="hover:text-white">Home</a></li>
+        <li><a href="#" class="hover:text-white">About</a></li>
+        <li><a href="#" class="hover:text-white">Gallery</a></li>
+        <li><a href="#" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Services</h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="#" class="hover:text-white">Corporate Events</a></li>
+        <li><a href="#" class="hover:text-white">Wedding</a></li>
+        <li><a href="#" class="hover:text-white">Birthday Celebrations</a></li>
+        <li><a href="#" class="hover:text-white">Workshops</a></li>
+        <li><a href="#" class="hover:text-white">Photography</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Contact Info</h4>
+      <ul class="space-y-3 text-sm text-gray-300">
+        <li>Kochi: T V Center, Kakkanad, Kerala 682037</li>
+        <li>Thrissur: Flamon Complex, Main Rd, Kuriachira, Kerala 680006</li>
+        <li>Calicut: VP 22/152ABC, Oorkadav, Akkod, Kerala 673640</li>
+        <li>📞 +91-859-001-0011</li>
+        <li>📧 auraevents@gmail.com</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="mt-12 border-t border-purple-700 pt-6 text-center text-sm text-gray-400">
+    © 2025 Aura Events. All rights reserved. | <a href="#" class="hover:text-white">Privacy Policy</a> | <a href="#" class="hover:text-white">Terms</a>
+  </div>
+</footer>
+
+</body>
+</html>

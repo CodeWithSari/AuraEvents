@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/3159/3159518.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- aosanimation -->
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- css -->
+   <style>
+    *{
+        padding: 0%;
+        margin: 0%;
+         box-sizing: border-box;
+    }
+      body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: bg-purple-100;
+   
+    }
+    h1,  h3, .brand {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+    }
+    .text-royal {
+      color: #D8B4F8;
+    }
+      
+    .bg-royal {
+      background-color: #4A2545;
+    }
+    .bg-royal-dark {
+      background-color: #2D1B2B;
+    }
+    .bg-royal-gradient {
+      background: linear-gradient(135deg, #4A2545 0%, #7A3B6E 50%, #C86FC9 100%);
+    }
+    .event-card {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    }
+    .hover-grow {
+      transition: all 0.3s ease;
+    }
+    .hover-grow:hover {
+      transform: scale(1.05);
+    }
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+      z-index: 0;
+    }
+    .video-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .video-overlay {
+      position: relative;
+      z-index: 1;
+    }
+    </style>
+
+</head>
+<body >
+    <header class="w-full h-screen relative overflow-hidden">
+  <div class="carousel flex transition-transform duration-700 ease-in-out h-full" id="carousel">
+    <img src="https://cdn.pixabay.com/photo/2025/06/11/09/52/giftbox-9654156_1280.jpg" class="w-full h-[800px] object-cover flex-shrink-0 bg-bottom bg-fixed" />
+    <img src="https://cdn.pixabay.com/photo/2023/03/14/23/56/kids-7853414_1280.jpg" class="w-full h-[800px] object-cover flex-shrink-0 bg-bottom bg-fixed" />
+    <img src="https://cdn.pixabay.com/photo/2023/12/26/11/46/cake-8470012_1280.jpg" class="w-full h-[800px] object-cover flex-shrink-0 bg-bottom bg-fixed" />
+
+  </div>
+
+  <!-- Navigation Buttons -->
+  <button onclick="prevSlide()" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white px-4 py-2 rounded-full z-10">
+    ❮
+  </button>
+  <button onclick="nextSlide()" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white px-4 py-2 rounded-full z-10">
+    ❯
+  </button>
+</header>
+
+<script>
+  const carousel = document.getElementById('carousel');
+  const slides = carousel.children.length;
+  let index = 0;
+
+  function updateSlide() {
+  carousel.style.transform = `translateX(-${index * 100}%)`;
+}
+
+
+  function nextSlide() {
+    index = (index + 1) % slides;
+    updateSlide();
+  }
+
+  function prevSlide() {
+    index = (index - 1 + slides) % slides;
+    updateSlide();
+  }
+
+  setInterval(nextSlide, 3000);
+
+  
+</script>
+
+  <!-- Navbar -->
+  <nav class="absolute top-0 left-0 w-full bg-black bg-opacity-50  text-white px-6 py-4 flex justify-between items-center">
+     <div class="flex items-center gap-x-4">
+      <img src="./images/auraevents.png" width="60" height="60" class="rounded-full hover-grow" alt="Aura Events Logo">
+      <div class="text-3xl brand text-royal">Aura Events</div>
+       
+    </div>
+    <ul class="flex space-x-6">
+     <a href="index.html" class="hover:underline hover:text-white transition-colors text-royal ">Home</a>
+      <a href="login.html" class="hover:underline hover:text-white transition-colors text-royal">Login</a>
+      <a href="register.html" class="hover:underline hover:text-white transition-colors text-royal">Register</a>
+      <a href="contact.html" class="hover:underline hover:text-white transition-colors text-royal">Contact</a>
+    </ul>
+  </nav>
+  
+
+    </div>
+    </header>
+    <section class="bg-purple-100" >
+        <p> <h1 class="text-4xl text-bold text-fuchsia-950 pt-20 px-20 text-center">Make Every Birthday Magical </h1></p>
+        <section class="bg-purple-100 py-10 px-5">
+  <h1 class="text-3xl font-bold text-center text-purple-800 mb-8 "> Our Services</h1>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+    
+    <!-- Service 1 -->
+<a href="birthdaycontent.html" class="block">
+  <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition hover:scale-105">
+    <h3 class="text-xl font-semibold text-purple-700">🎂 Themes</h3>
+    <p class="text-gray-600 mt-2">Custom themes for all age groups and interests.</p>
+  </div>
+</a>
+
+<!-- Service 2 -->
+<a href="birthdaycontent.html#cakes" class="block">
+  <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition hover:scale-105">
+    <h3 class="text-xl font-semibold text-purple-700">🍰 Cakes</h3>
+    <p class="text-gray-600 mt-2">Delicious birthday cakes in any design or flavor.</p>
+  </div>
+</a>
+
+<!-- Service 3 -->
+<a href="birthdaycontent.html#decorations" class="block">
+  <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition hover:scale-105">
+    <h3 class="text-xl font-semibold text-purple-700">🎈 Decorations</h3>
+    <p class="text-gray-600 mt-2">Balloon, lights, and creative setups for the  party vibe.</p>
+  </div>
+</a>
+
+<!-- Service 4 -->
+<a href="birthdaycontent.html#gifts" class="block">
+  <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition hover:scale-105">
+    <h3 class="text-xl font-semibold text-purple-700">🎁 Return Gifts</h3>
+    <p class="text-gray-600 mt-2">Unique gift ideas your guests will love.</p>
+  </div>
+</a>
+
+  </div>
+</section>
+
+    </section>
+    <section class="bg-purple-100 py-10 px-5">
+  <h1 class="text-3xl font-bold text-center text-purple-800 mb-8"> Party Packages</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    
+    <!-- Basic Package -->
+    <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+      <h3 class="text-xl font-bold text-purple-700 mb-4">🛍 Basic</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Simple Theme Setup</li>
+        <li>Basic Balloon Decorations</li>
+        <li>1/2 kg Cake</li>
+        <li>10 Return Gifts</li>
+      </ul>
+    </div>
+
+    <!-- Premium Package -->
+    <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+      <h3 class="text-xl font-bold text-purple-700 mb-4">🌟 Premium</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Themed Decorations</li>
+        <li>1 kg Designer Cake</li>
+        <li>Backdrop & Photo Booth</li>
+        <li>20 Return Gifts</li>
+      </ul>
+    </div>
+
+    <!-- Luxury Package -->
+    <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+      <h3 class="text-xl font-bold text-purple-700 mb-4">💎 Luxury</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Custom Theme & Stage</li>
+        <li>2 kg Designer Cake</li>
+        <li>Live Entertainment</li>
+        <li>Professional Photography</li>
+        <li>40 Return Gifts</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+<section  class="bg-purple-100 py-10 px-5" >
+    <h1 class="text-3xl font-bold text-center text-purple-800 mb-8"> 📸 Our Party Moments</h1>
+  
+
+ <div class="grid grid-cols-3 gap-x-8 gap-y-4">
+    <img src="https://cdn.pixabay.com/photo/2023/12/29/09/21/ai-generated-8475867_1280.png" alt="Party 1"
+         class="w-full rounded-lg shadow-md"
+         data-aos="zoom-in" data-aos-delay="100" />
+    <img src="https://cdn.pixabay.com/photo/2017/01/10/17/12/guinea-pig-1969698_1280.jpg" alt="Party 2"
+         class="w-full h-[320px] rounded-lg shadow-md"
+         data-aos="fade-up" data-aos-delay="200" />
+    <img src="https://cdn.pixabay.com/photo/2021/02/01/15/59/children-5971126_1280.jpg" alt="Party 3"
+         class="w-full rounded-lg shadow-md"
+         data-aos="flip-left" data-aos-delay="300" />
+</div>
+          <div class="grid grid-cols-3 gap-x-8 gap-y-4 pt-20 px-20">
+    <img src="https://cdn.pixabay.com/photo/2020/03/23/23/15/dog-4962266_1280.jpg" alt="Party 5"
+         class="w-full rounded-lg shadow-md"
+         data-aos="fade-left" data-aos-delay="500" />
+    <img src="https://cdn.pixabay.com/photo/2022/03/05/08/37/baby-7048652_1280.jpg" alt="Party 6"
+         class="w-full rounded-lg shadow-md"
+         data-aos="zoom-in-up" data-aos-delay="600" />
+          <img src="https://cdn.pixabay.com/photo/2021/10/27/10/35/father-and-daughter-6746699_1280.jpg"  alt="Party 1"
+         class="w-full h-[630px] rounded-lg shadow-md"
+         data-aos="zoom-in" data-aos-delay="100" />
+  </div>
+          <div class="grid grid-cols-3 gap-x-8 gap-y-4 pt-20 px-20">
+    <img src="https://cdn.pixabay.com/photo/2017/06/06/12/08/birthday-2377087_1280.jpg" alt="Party 5"
+         class="w-full rounded-lg shadow-md"
+         data-aos="fade-left" data-aos-delay="500" />
+    <img src="https://cdn.pixabay.com/photo/2020/03/22/17/50/party-4957960_1280.jpg" alt="Party 6"
+         class="w-full h-[340px] rounded-lg shadow-md"
+         data-aos="zoom-in-up" data-aos-delay="600" />
+          <img src="https://cdn.pixabay.com/photo/2021/12/23/22/23/baby-6890140_1280.jpg"  alt="Party 1"
+         class="w-full h-[340px] rounded-lg shadow-md"
+         data-aos="zoom-in" data-aos-delay="100" />
+  </div>
+    <div class="grid grid-cols-3 gap-x-8 gap-y-4 pt-20 px-20">
+    <img src="https://cdn.pixabay.com/photo/2022/08/02/18/30/birthday-party-7361026_1280.jpg" alt="Party 5"
+         class="w-full h-[340px]  rounded-lg shadow-md"
+         data-aos="fade-left" data-aos-delay="500" />
+    <img src="https://img.freepik.com/premium-photo/happy-old-peoples-happy-together-celebrating-birthday_457222-31171.jpg" alt="Party 6"
+         class="w-full h-[340px] rounded-lg shadow-md"
+         data-aos="zoom-in-up" data-aos-delay="600" />
+          <img src="https://cdn.pixabay.com/photo/2014/06/30/11/40/cupcakes-380178_1280.jpg"  alt="Party 1"
+         class="w-full h-[340px] rounded-lg shadow-md"
+         data-aos="zoom-in" data-aos-delay="100" />
+  </div>
+  <div class="grid grid-cols-3 gap-x-8 gap-y-4 pt-20 px-20">
+    <img src="https://cdn.pixabay.com/photo/2023/04/24/16/50/cake-7948556_1280.jpg" alt="Party 5"
+         class="w-full h-[640px]  rounded-lg shadow-md"
+         data-aos="fade-left" data-aos-delay="500" />
+    <img src="https://cdn.pixabay.com/photo/2021/10/27/10/33/birthday-6746691_1280.jpg" alt="Party 6"
+         class="w-full h-[640px] rounded-lg shadow-md"
+         data-aos="zoom-in-up" data-aos-delay="600" />
+          <img src="https://cdn.pixabay.com/photo/2023/11/11/20/10/woman-8381802_1280.jpg"  alt="Party 1"
+         class="w-full h-[640px] rounded-lg shadow-md"
+         data-aos="zoom-in" data-aos-delay="100" />
+  </div>
+</section>
+
+<!-- footer -->
+
+ <footer class="bg-royal text-white pt-16 pb-8 px-6">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 sm:grid-cols-2 gap-10">
+
+    <!-- Company Info -->
+    <div>
+      <h4 class="text-xl font-semibold mb-4 text-pink-300">Aura Events</h4>
+      <p class="text-sm text-gray-300">
+        Planning a full event has never been easier! Aura® Event Management offers premium services for destination weddings, corporate events, and private celebrations across Kerala.
+      </p>
+      <div class="flex space-x-4 mt-4">
+        <a href="#" aria-label="Instagram" class="hover:text-pink-400">Instagram</a>
+        <a href="#" aria-label="YouTube" class="hover:text-pink-400">YouTube</a>
+        <a href="#" aria-label="Facebook" class="hover:text-pink-400">Facebook</a>
+    
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Quick Links</h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="#" class="hover:text-white">Home</a></li>
+        <li><a href="#" class="hover:text-white">About</a></li>
+        <li><a href="#" class="hover:text-white">Gallery</a></li>
+        <li><a href="#" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Services</h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="#" class="hover:text-white">Corporate Events</a></li>
+        <li><a href="#" class="hover:text-white">Wedding</a></li>
+        <li><a href="#" class="hover:text-white">Birthday Celebrations</a></li>
+        <li><a href="#" class="hover:text-white">Workshops</a></li>
+        <li><a href="#" class="hover:text-white">Photography</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Contact Info</h4>
+      <ul class="space-y-3 text-sm text-gray-300">
+        <li>Kochi: T V Center, Kakkanad, Kerala 682037</li>
+        <li>Thrissur: Flamon Complex, Main Rd, Kuriachira, Kerala 680006</li>
+        <li>Calicut: VP 22/152ABC, Oorkadav, Akkod, Kerala 673640</li>
+        <li>📞 +91-859-001-0011</li>
+        <li>📧 auraevents@gmail.com</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="mt-12 border-t border-purple-700 pt-6 text-center text-sm text-gray-400">
+    © 2025 Aura Events. All rights reserved. | <a href="#" class="hover:text-white">Privacy Policy</a> | <a href="#" class="hover:text-white">Terms</a>
+  </div>
+</footer>
+
+    <script>
+  AOS.init();
+</script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Workshops & Seminars | Aura Events</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Alpine.js for dropdowns -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+    h1, h2, h3, .brand {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+    }
+    .text-royal {
+      color: #D8B4F8;
+    }
+    .bg-royal {
+      background-color: #4A2545;
+    }
+    .bg-royal-dark {
+      background-color: #2D1B2B;
+    }
+    .bg-royal-gradient {
+      background: linear-gradient(135deg, #4A2545 0%, #7A3B6E 50%, #C86FC9 100%);
+    }
+    .hover-grow {
+      transition: all 0.3s ease;
+    }
+    .hover-grow:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-royal-dark text-white min-h-screen">
+
+  <!-- Navbar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur-md shadow-md border-b border-white/20">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Left Logo and Brand -->
+    <div class="flex items-center gap-x-4">
+      <img src="./images/auraevents.png" width="60" height="60" class="rounded-full hover:scale-105 transition-transform duration-300" alt="Aura Events Logo">
+      <div class="text-3xl font-bold text-royal">Aura Events</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex space-x-6 text-base items-center" x-data="{ servicesOpen: false, galleryOpen: false }">
+      <a href="index.html" class="hover:underline hover:text-royal transition-colors text-royal">Home</a>
+      <a href="#about" class="hover:underline hover:text-white transition-colors">About</a>
+
+      <!-- Services Dropdown -->
+      <div class="relative" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
+        <button class="hover:underline hover:text-white transition-colors">Services</button>
+        <div x-show="servicesOpen" x-transition class="absolute top-full left-0 mt-2 w-56 bg-royal-dark text-white rounded shadow-lg border border-purple-600 z-50">
+          <a href="birthday.html" class="block px-4 py-2 hover:bg-purple-700">Birthday Parties</a>
+          <a href="photography.html" class="block px-4 py-2 hover:bg-purple-700">Photography Sessions</a>
+          <a href="wedding.html" class="block px-4 py-2 hover:bg-purple-700">Weddings</a>
+          <a href="corporate.html" class="block px-4 py-2 hover:bg-purple-700">Corporate Events</a>
+          <a href="workshops.html" class="block px-4 py-2 hover:bg-purple-700">Workshops & Seminars</a>
+        </div>
+      </div>
+
+      <!-- Gallery Dropdown -->
+      <div class="relative" @mouseenter="galleryOpen = true" @mouseleave="galleryOpen = false">
+        <button class="hover:underline hover:text-white transition-colors">Gallery</button>
+        <div x-show="galleryOpen" x-transition class="absolute top-full left-0 mt-2 w-56 bg-royal-dark text-white rounded shadow-lg border border-purple-600 z-50">
+          <a href="#photo-gallery" class="block px-4 py-2 hover:bg-purple-700">Photo Gallery</a>
+          <a href="#video-gallery" class="block px-4 py-2 hover:bg-purple-700">Video Gallery</a>
+          <a href="#shorts-gallery" class="block px-4 py-2 hover:bg-purple-700">Shorts Gallery</a>
+          <a href="#wedding-albums" class="block px-4 py-2 hover:bg-purple-700">Wedding Albums</a>
+        </div>
+      </div>
+
+  
+      <a href="contact.html" class="hover:underline hover:text-white transition-colors">Contact</a>
+      <a href="login.html" class="hover:underline hover:text-white transition-colors">Login</a>
+      <a href="register.html" class="hover:underline hover:text-white transition-colors">Register</a>
+    </nav>
+  </div>
+</header>
+
+
+  <!-- Hero Section -->
+  <section class="text-center py-16 px-4 mt-12 bg-royal-gradient">
+    <h1 class="text-5xl mb-4 brand text-white">Workshops & Seminars</h1>
+    <p class="text-lg max-w-2xl mx-auto text-purple-100">
+      Engage your audience with impactful, professional, and seamlessly organized workshops and seminars by Aura Events.
+    </p>
+  </section>
+
+  <!-- Workshop Content -->
+  <section class="py-16 px-6 max-w-6xl mx-auto bg-">
+    <h2 class="text-3xl brand text-royal text-center mb-10">What We Offer</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <!-- Workshop Card -->
+      <div class="bg-royal p-6 rounded-xl shadow-lg hover-grow transition-all">
+        <h3 class="text-2xl text-royal mb-2">🎤 Guest Speaker Seminars</h3>
+        <p class="text-purple-100">Connect your audience with industry leaders, thought-provokers, and motivational icons.</p>
+      </div>
+
+      <div class="bg-royal p-6 rounded-xl shadow-lg hover-grow transition-all">
+        <h3 class="text-2xl text-royal mb-2">🧠 Skill Development Workshops</h3>
+        <p class="text-purple-100">Hands-on learning sessions tailored to professional growth, technical expertise, and soft skills.</p>
+      </div>
+
+      <div class="bg-royal p-6 rounded-xl shadow-lg hover-grow transition-all">
+        <h3 class="text-2xl text-royal mb-2">🏢 Corporate Training Programs</h3>
+        <p class="text-purple-100">Boost productivity and team cohesion with structured, impactful training modules.</p>
+      </div>
+
+      <div class="bg-royal p-6 rounded-xl shadow-lg hover-grow transition-all">
+        <h3 class="text-2xl text-royal mb-2">🎓 Academic Seminars</h3>
+        <p class="text-purple-100">Organized for schools, colleges, and institutions to provide meaningful learning experiences.</p>
+      </div>
+    </div>
+    <section class="py-16 px-6 bg-royal-dark">
+  <h2 class="text-3xl brand text-royal text-center mb-10">Gallery: Moments That Matter</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <img src="./images/training.png" alt="Workshop 1" class="rounded-xl shadow-md hover-grow">
+    <img src="./images/lecture-385357_1280.jpg" alt="Seminar 2" class="rounded-xl shadow-md hover-grow">
+    <img src="./images/seminar.png" alt="Training 3" class="rounded-xl shadow-md hover-grow">
+    <img src="./images/guest.png" alt="Guest Speaker" class="rounded-xl shadow-md hover-grow">
+    <img src="./images/stage1.png" alt="Team Session" class="rounded-xl shadow-md hover-grow">
+    <img src="./images/stage.png" alt="Audience Engagement" class="rounded-xl shadow-md hover-grow">
+  </div>
+</section>
+
+    <!-- Services Section -->
+<section class="py-16 px-6 max-w-6xl mx-auto">
+  <h2 class="text-3xl brand text-royal text-center mb-10">Our Services</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+    <div class="bg-royal p-6 rounded-xl shadow-lg hover-grow">
+      <h3 class="text-2xl text-royal mb-2">🌟 Event Planning</h3>
+      <p class="text-purple-100">Complete event management from concept to execution with seamless coordination.</p>
+    </div>
+    <div class="bg-royal p-6 rounded-xl shadow-lg hover-grow">
+      <h3 class="text-2xl text-royal mb-2">🍽 Catering Services</h3>
+      <p class="text-purple-100">Exquisite food arrangements tailored to your event type and guest preferences.</p>
+    </div>
+    <div class="bg-royal p-6 rounded-xl shadow-lg hover-grow">
+      <h3 class="text-2xl text-royal mb-2">🎶 Entertainment</h3>
+      <p class="text-purple-100">From live music to DJs, we set the perfect mood for every celebration.</p>
+    </div>
+  </div>
+</section>
+<section class="py-16 px-6 max-w-6xl mx-auto">
+  <h2 class="text-3xl brand text-royal text-center mb-10">Why Choose Aura Events?</h2>
+  <div class="grid md:grid-cols-3 gap-8 text-purple-100">
+    <div class="bg-royal-dark p-6 rounded-xl shadow-lg hover-grow text-center">
+      <h3 class="text-xl text-royal mb-2">✔ Expertise That Inspires</h3>
+      <p>Our professional event coordinators bring years of experience in managing educational and corporate events.</p>
+    </div>
+    <div class="bg-royal-dark p-6 rounded-xl shadow-lg hover-grow text-center">
+      <h3 class="text-xl text-royal mb-2">🎯 accurate Content</h3>
+      <p>Each session is custom-built for your audience, goals, and industry needs.</p>
+    </div>
+    <div class="bg-royal-dark p-6 rounded-xl shadow-lg hover-grow text-center">
+      <h3 class="text-xl text-royal mb-2">🕒 Time & Cost Efficiency</h3>
+      <p>We handle everything—from venue to feedback—on time and within your budget.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Party Themes Section -->
+<section class="py-16 px-6 bg-royal text-white">
+  <h2 class="text-3xl brand text-royal text-center mb-10">Party Themes We Love</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="bg-royal-dark p-6 rounded-xl shadow-lg hover-grow">
+      <h3 class="text-2xl text-royal mb-2">🎈 Kid's Birthday Bash</h3>
+      <p class="text-purple-100">Colorful themes, fun games, and joyful memories for little ones and families.</p>
+    </div>
+    <div class="bg-royal-dark p-6 rounded-xl shadow-lg hover-grow">
+      <h3 class="text-2xl text-royal mb-2">🎭 Themed Costume Parties</h3>
+      <p class="text-purple-100">Masquerade, retro, Bollywood, Hollywood  we bring your theme to life in style.</p>
+    </div>
+    <div class="bg-royal-dark p-6 rounded-xl shadow-lg hover-grow">
+      <h3 class="text-2xl text-royal mb-2">🍾 Luxury Celebrations</h3>
+      <p class="text-purple-100">Elegant, exclusive, and premium parties with flawless aesthetics and ambiance.</p>
+    </div>
+  </div>
+</section>
+
+
+    <div class="text-center mt-12">
+      <a href="index.html#booking" class="inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-semibold transition-all hover-grow">Plan a Workshop</a>
+    </div>
+  </section>
+
+
+  <!-- footer -->
+
+ <footer class="bg-royal text-white pt-16 pb-8 px-6">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 sm:grid-cols-2 gap-10">
+
+    <!-- Company Info -->
+    <div>
+      <h4 class="text-xl font-semibold mb-4 text-pink-300">Aura Events</h4>
+      <p class="text-sm text-gray-300">
+        Planning a full event has never been easier! Aura® Event Management offers premium services for destination weddings, corporate events, and private celebrations across Kerala.
+      </p>
+      <div class="flex space-x-4 mt-4">
+        <a href="#" aria-label="Instagram" class="hover:text-pink-400">Instagram</a>
+        <a href="#" aria-label="YouTube" class="hover:text-pink-400">YouTube</a>
+        <a href="#" aria-label="Facebook" class="hover:text-pink-400">Facebook</a>
+    
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Quick Links</h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="index.html" class="hover:text-white">Home</a></li>
+        <li><a href="index.html/#about" class="hover:text-white">About</a></li>
+        <li><a href="#gallery" class="hover:text-white">Gallery</a></li>
+        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Services</h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="corporate.html" class="hover:text-white">Corporate Events</a></li>
+        <li><a href="wedding.html" class="hover:text-white">Wedding</a></li>
+        <li><a href="birthday.html" class="hover:text-white">Birthday Celebrations</a></li>
+        <li><a href="workshop.html" class="hover:text-white">Workshops</a></li>
+        <li><a href="photography.html" class="hover:text-white">Photography</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Contact Info</h4>
+      <ul class="space-y-3 text-sm text-gray-300">
+        <li>Kochi: T V Center, Kakkanad, Kerala 682037</li>
+        <li>Thrissur: Flamon Complex, Main Rd, Kuriachira, Kerala 680006</li>
+        <li>Calicut: VP 22/152ABC, Oorkadav, Akkod, Kerala 673640</li>
+        <li>📞 +91-859-001-0011</li>
+        <li>📧 auraevents@gmail.com</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="mt-12 border-t border-purple-700 pt-6 text-center text-sm text-gray-400">
+    © 2025 Aura Events. All rights reserved. | <a href="#" class="hover:text-white">Privacy Policy</a> | <a href="#" class="hover:text-white">Terms</a>
+  </div>
+</footer>
+
+</body>
+</html>
