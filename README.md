@@ -1,4 +1,6 @@
 👥 Team Members & Their Contributions
+
+
 Saritha 
 • Designed index.html
 • Created the logo
