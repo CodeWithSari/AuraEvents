@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Gallery - Aura Events</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/1054/1054436.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Alpine.js for dropdowns -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #8b6086;
+    }
+    h1, h2, .brand {
+      font-family: 'Cinzel', serif;
+    }
+    .text-royal { color: #D8B4F8; }
+    .bg-royal { background-color: #4A2545; }
+    .video-card {
+      overflow: hidden;
+      border-radius: 1rem;
+      transition: transform 0.3s;
+    }
+    .video-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur-md shadow-md border-b border-white/20">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Left Logo and Brand -->
+    <div class="flex items-center gap-x-4">
+      <img src="./images/auraevents.png" width="60" height="60" class="rounded-full hover:scale-105 transition-transform duration-300" alt="Aura Events Logo">
+      <div class="text-3xl font-bold text-purple-800">Aura Events</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex space-x-6 text-base items-center" x-data="{ servicesOpen: false, galleryOpen: false }">
+      <a href="index.html" class="hover:underline hover:text-royal transition-colors text-royal">Home</a>
+      <a href="#about" class="hover:underline hover:text-white transition-colors">About</a>
+
+      <!-- Services Dropdown -->
+      <div class="relative" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
+        <button class="hover:underline hover:text-white transition-colors">Services</button>
+        <div x-show="servicesOpen" x-transition class="absolute top-full left-0 mt-2 w-56 bg-royal text-white rounded shadow-lg border border-purple-600 z-50">
+          <a href="birthday.html" class="block px-4 py-2 hover:bg-purple-700">Birthday Parties</a>
+          <a href="photography.html" class="block px-4 py-2 hover:bg-purple-700">Photography Sessions</a>
+          <a href="wedding.html" class="block px-4 py-2 hover:bg-purple-700">Weddings</a>
+          <a href="corporate.html" class="block px-4 py-2 hover:bg-purple-700">Corporate Events</a>
+          <a href="workshops.html" class="block px-4 py-2 hover:bg-purple-700">Workshops & Seminars</a>
+        </div>
+      </div>
+
+      <!-- Gallery Dropdown -->
+      <div class="relative" @mouseenter="galleryOpen = true" @mouseleave="galleryOpen = false">
+        <button class="hover:underline hover:text-white transition-colors">Gallery</button>
+        <div x-show="galleryOpen" x-transition class="absolute top-full left-0 mt-2 w-56 bg-royal text-white rounded shadow-lg border border-purple-600 z-50">
+          <a href="#photo-gallery" class="block px-4 py-2 hover:bg-purple-700">Photo Gallery</a>
+          <a href="videogallery.html" class="block px-4 py-2 hover:bg-purple-700">Video Gallery</a>
+          <a href="#shorts-gallery" class="block px-4 py-2 hover:bg-purple-700">Shorts Gallery</a>
+          <a href="#wedding-albums" class="block px-4 py-2 hover:bg-purple-700">Wedding Albums</a>
+        </div>
+      </div>
+
+      <a href="booking.html" class="hover:underline hover:text-white transition-colors">Booking</a>
+      <a href="contact.html" class="hover:underline hover:text-white transition-colors">Contact</a>
+      <a href="login.html" class="hover:underline hover:text-white transition-colors">Login</a>
+      <a href="register.html" class="hover:underline hover:text-white transition-colors">Register</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="px-6 sm:px-10 pt-20 space-y-20 pt-28 pb-32 ">
+    <!-- 🎂 Birthday -->
+    <section class="rounded-xl shadow-lg px-6 py-12 bg-gradient-to-r from-[#cfc7e0] via-[#eac8f8] to-[#d8b4f8]" id="birthday">
+      <h2 class="text-4xl text-purple-800 mb-10" data-aos="fade-right">🎂 Birthday Party</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 3 Videos -->
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="100"><iframe width="853" height="480" src="https://www.youtube.com/embed/BUuskCEzy-Y" title="Aaryan&#39;s First Birthday Celebration | Baby Aaryan | Nimmy Arungopan | Arun Gopan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="200"><iframe width="853" height="480" src="https://www.youtube.com/embed/N_VOOWicVM8" title="Dil Raju&#39;s son Anvay 1st Birthday | RVRPRO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="300"><iframe width="853" height="480" src="https://www.youtube.com/embed/Jg-eVW90aoY" title="Evan&#39;s Birthday VLOG |Evan&#39;s First Birthday |BIRTHDAY VIDEO|BIRTHDAY CELEBRATION MALAYALAM |Vlog -02" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        
+      </div>
+    </section>
+
+    <!-- 💍 Wedding -->
+    <section class="rounded-xl shadow-lg px-6 py-12 bg-gradient-to-r from-[#f8d3e0] via-[#dab1d6] to-[#c9a2d9]" id="wedding">
+      <h2 class="text-4xl text-purple-800 mb-10" data-aos="fade-right">💍 Wedding</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 3 Videos -->
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="100"><iframe width="853" height="480" src="https://www.youtube.com/embed/dw3oN6gkfio" title="Kerala Traditional Hindu Wedding Highlights Gayathri &amp; vishnu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="200"><iframe width="853" height="480" src="https://www.youtube.com/embed/mUWOOxj4VCQ" title="NEW KERALA MUSLIM WEDDING HIGHLIGHTS 2024 |SHANU&amp;RASHA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="300"><iframe width="853" height="480" src="https://www.youtube.com/embed/HjVdbNlFsz0" title="3Ripplets Wedding Kerala | Variety wedding |Kerala wedding 2024 C9 Event  | Piccolo weddings" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      </div>
+    </section>
+
+    <!-- 📸 Photography -->
+    <section class="rounded-xl shadow-lg px-6 py-12 bg-gradient-to-r from-[#f2d4ea] via-[#e1bdf3] to-[#d0a5e8]" id="photography">
+      <h2 class="text-4xl text-purple-800 mb-10" data-aos="fade-right">📸 Photography</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 3 Videos -->
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="100"><iframe width="1047" height="448" src="https://www.youtube.com/embed/Zq2YEx1q5Kk" title="LITHURAN BIRTHDAY TEASER | V WEDDINGS PHOTOGRAPHY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="200"><iframe width="1047" height="448" src="https://www.youtube.com/embed/HbdRWUVmMXc" title="IQBAL-GURU | PRE WEDDING | OUTDOOR CINEMATIC VIDEO | V WEDDINGS PHOTOGRAPHY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="300"><iframe width="853" height="480" src="https://www.youtube.com/embed/BCsKdQew4II" title="Beautiful Kerala Christian Wedding Video of Febin &amp; Kathreena | A Day of Love and Joy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      </div>
+    </section>
+
+    <!-- 📢 Conferences -->
+    <section class="rounded-xl shadow-lg px-6 py-12 bg-gradient-to-r from-[#d2c4e0] via-[#c7a9d9] to-[#bb91d0]" id="conferences">
+      <h2 class="text-4xl text-purple-800 mb-10" data-aos="fade-right">📢 Conferences</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 3 Videos -->
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="100"><iframe width="853" height="480" src="https://www.youtube.com/embed/5VQXTImmt3Q" title="Celebrating a Decade of Excellence with MUFG in Bangalore" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="200"><iframe width="853" height="480" src="https://www.youtube.com/embed/9ILeAw08bT4" title="SAP SIT 2023 | SAP LABS CAMPUS | Event by Zeal Integrated" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="300"><iframe width="853" height="480" src="https://www.youtube.com/embed/BOG_CbEDhag" title="We Are Sales Conference 2022 | The official aftermovie" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      </div>
+    </section>
+
+    <!-- 🏢 Corporate Events -->
+    <section class="rounded-xl shadow-lg px-6 py-12 bg-gradient-to-r from-[#e6c7ef] via-[#d4b0e7] to-[#bc9ed6]" id="corporate">
+      <h2 class="text-4xl text-purple-800 mb-10" data-aos="fade-right">🏢 Corporate Events</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+       <!-- 3 Videos -->
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="100"><iframe width="853" height="480" src="https://www.youtube.com/embed/xxKTNVxhLug" title="Corporate Concept Event | Corporate Event Management Company in Kerala" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="200"><iframe width="853" height="480" src="https://www.youtube.com/embed/KhXugPScwEc" title="Corporate event management | Events by Knight" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="video-card" data-aos="zoom-in" data-aos-delay="300"><iframe width="853" height="480" src="https://www.youtube.com/embed/_IhFKSV-UQU" title="Data Innovation Summit 2020 - Promo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+
+ <footer class="bg-royal text-white pt-16 pb-8 px-6">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 sm:grid-cols-2 gap-10">
+
+    <!-- Company Info -->
+    <div>
+      <h4 class="text-xl font-semibold mb-4 text-pink-300">Aura Events</h4>
+      <p class="text-sm text-gray-300">
+        Planning a full event has never been easier! Aura® Event Management offers premium services for destination weddings, corporate events, and private celebrations across Kerala.
+      </p>
+      <div class="flex space-x-4 mt-4">
+        <a href="#" aria-label="Instagram" class="hover:text-pink-400">Instagram</a>
+        <a href="#" aria-label="YouTube" class="hover:text-pink-400">YouTube</a>
+        <a href="#" aria-label="Facebook" class="hover:text-pink-400">Facebook</a>
+    
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Quick Links</h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="index.html" class="hover:text-white">Home</a></li>
+        <li><a href="index.html/#about" class="hover:text-white">About</a></li>
+        <li><a href="videogallery.html" class="hover:text-white">Gallery</a></li>
+        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Services</h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="corporate.html" class="hover:text-white">Corporate Events</a></li>
+        <li><a href="wedding.html" class="hover:text-white">Wedding</a></li>
+        <li><a href="birthday.html" class="hover:text-white">Birthday Celebrations</a></li>
+        <li><a href="workshop.html" class="hover:text-white">Workshops</a></li>
+        <li><a href="photography.html" class="hover:text-white">Photography</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h4 class="text-lg font-semibold mb-4 text-pink-300">Contact Info</h4>
+      <ul class="space-y-3 text-sm text-gray-300">
+        <li>Kochi: T V Center, Kakkanad, Kerala 682037</li>
+        <li>Thrissur: Flamon Complex, Main Rd, Kuriachira, Kerala 680006</li>
+        <li>Calicut: VP 22/152ABC, Oorkadav, Akkod, Kerala 673640</li>
+        <li>📞 +91-859-001-0011</li>
+        <li>📧 auraevents@gmail.com</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="mt-12 border-t border-purple-700 pt-6 text-center text-sm text-gray-400">
+    © 2025 Aura Events. All rights reserved. | <a href="#" class="hover:text-white">Privacy Policy</a> | <a href="#" class="hover:text-white">Terms</a>
+  </div>
+</footer>
+
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>
