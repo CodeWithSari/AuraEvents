@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoGallery</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/8540/8540857.png">
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- aosanimation -->
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Alpine.js for dropdowns -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<!-- css -->
+  <style>
+    *{
+        padding: 0%;
+        margin: 0%;
+         box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+     background-color: #8b6086;
+   
+    }
+    h1,  h3, .brand {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+    }
+    .text-royal {
+      color: #D8B4F8;
+    }
+      
+    .bg-royal {
+      background-color: #4A2545;
+    }
+    .bg-royal-dark {
+      background-color: #2D1B2B;
+    }
+    .bg-royal-gradient {
+      background: linear-gradient(135deg, #4A2545 0%, #7A3B6E 50%, #C86FC9 100%);
+    }
+    .event-card {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    }
+    .hover-grow {
+      transition: all 0.3s ease;
+    }
+    .hover-grow:hover {
+      transform: scale(1.05);
+    }
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+      z-index: 0;
+    }
+    .video-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .video-overlay {
+      position: relative;
+      z-index: 1;
+    }
+    #head{
+      
+        padding: 30px;
+    }
+   #service {
+    padding-top: 120px;
+
+    }
+  
+    </style>
+
+ </head>
+<body >
+   <!-- Navbar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur-md shadow-md border-b border-white/20">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Left Logo and Brand -->
+    <div class="flex items-center gap-x-4">
+      <img src="./images/auraevents.png" width="60" height="60" class="rounded-full hover:scale-105 transition-transform duration-300" alt="Aura Events Logo">
+      <div class="text-3xl font-bold text-purple-800">Aura Events</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex space-x-6 text-base items-center" x-data="{ servicesOpen: false, galleryOpen: false }">
+      <a href="index.html" class="hover:underline hover:text-royal transition-colors text-royal">Home</a>
+      <a href="#about" class="hover:underline hover:text-white transition-colors">About</a>
+
+      <!-- Services Dropdown -->
+      <div class="relative" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
+        <button class="hover:underline hover:text-white transition-colors">Services</button>
+        <div x-show="servicesOpen" x-transition class="absolute top-full left-0 mt-2 w-56 bg-royal text-white rounded shadow-lg border border-purple-600 z-50">
+          <a href="birthday.html" class="block px-4 py-2 hover:bg-purple-700">Birthday Parties</a>
+          <a href="photography.html" class="block px-4 py-2 hover:bg-purple-700">Photography Sessions</a>
+          <a href="wedding.html" class="block px-4 py-2 hover:bg-purple-700">Weddings</a>
+          <a href="corporate.html" class="block px-4 py-2 hover:bg-purple-700">Corporate Events</a>
+          <a href="workshops.html" class="block px-4 py-2 hover:bg-purple-700">Workshops & Seminars</a>
+        </div>
+      </div>
+
+      <!-- Gallery Dropdown -->
+      <div class="relative" @mouseenter="galleryOpen = true" @mouseleave="galleryOpen = false">
+        <button class="hover:underline hover:text-white transition-colors">Gallery</button>
+        <div x-show="galleryOpen" x-transition class="absolute top-full left-0 mt-2 w-56 bg-royal text-white rounded shadow-lg border border-purple-600 z-50">
+          <a href="photogallery.html" class="block px-4 py-2 hover:bg-purple-700">Photo Gallery</a>
+          <a href="videogallery.html" class="block px-4 py-2 hover:bg-purple-700">Video Gallery</a>
+          <a href="#shorts-gallery" class="block px-4 py-2 hover:bg-purple-700">Shorts Gallery</a>
+          <a href="#wedding-albums" class="block px-4 py-2 hover:bg-purple-700">Wedding Albums</a>
+        </div>
+      </div>
+
+      <a href="booking.html" class="hover:underline hover:text-white transition-colors">Booking</a>
+      <a href="contact.html" class="hover:underline hover:text-white transition-colors">Contact</a>
+      <a href="login.html" class="hover:underline hover:text-white transition-colors">Login</a>
+      <a href="register.html" class="hover:underline hover:text-white transition-colors">Register</a>
+    </nav>
+  </div>
+</header>
+
+
+
+  <section id="themes">
+    
+
+    <h2 class="text-4xl text-white ps-20 pt-20" data-aos="fade-right">🎂 BIRTHDAY PARTY</h2>
+    <div class="grid grid-cols-4 gap-x-8 gap-y-4 px-5 pt-20">
+      <div data-aos="zoom-in"><img src="https://apartytoremember.com.au/wp-content/uploads/2022/03/wp-1648695650664-834x1024.jpg" alt="Superhero Party" class="w-full h-[340px] rounded-lg"></div>
+         
+     <div data-aos="flip-left"><img src="https://cdn.pixabay.com/photo/2015/10/03/15/32/birthday-969957_1280.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+            <div data-aos="flip-left" data-aos-delay="100"><img src="http://cupofjo.com/wp-content/uploads/2016/06/happy-birthday-cake.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+            <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2021/10/27/10/34/birthday-6746693_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[340px] rounded-lg"></div>
+
+      <div data-aos="zoom-in" data-aos-delay="400"><img src="https://i.pinimg.com/736x/bd/3c/4b/bd3c4bd52d1d99fda5ba6eacfeae0c02.jpg" alt="Spring Bloom Party" class="w-full h-[340px] rounded-lg" /></div>
+    
+      <div data-aos="zoom-in" data-aos-delay="100"><img src="https://www.mydomaine.com/thmb/89qGMEcRmql5CdYZ8V4pwYPNS8o=/1080x0/filters:no_upscale():strip_icc()/241100290_121031256940819_6659753922246227471_n-23ef3d39c14346a987e02b6987ce2381.jpg" class="w-full h-[340px] rounded-lg" /></div>
+      <div data-aos="flip-left" data-aos-delay="100"><img src="https://cdn.pixabay.com/photo/2014/06/30/11/40/cupcakes-380178_1280.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="zoom-in" data-aos-delay="200"><img src="https://th.bing.com/th/id/OIP.OzsOZ7vlz8IuwUqFZ0TLQAHaHa?w=185&h=185&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="zoom-in" data-aos-delay="300"><img src="https://th.bing.com/th/id/OIP.qEJJrTOdPMX9oI6peN2CYgHaEO?w=303&h=184&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Retro Party" class="w-full h-[340px] rounded-lg" /></div>
+       <div data-aos="flip-left" data-aos-delay="200"><img src="https://cdn.pixabay.com/photo/2022/06/08/14/49/party-7250621_1280.jpg" alt="Pull Me Up Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="zoom-in" data-aos-delay="400"><img src="https://i.pinimg.com/originals/57/02/53/5702533903e784dfc12ca0f044bee1d2.jpg" alt="Spring Bloom Party" class="w-full h-[340px] rounded-lg" /></div>
+      <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2023/08/24/04/07/birthday-8209747_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[340px] rounded-lg"></div>
+
+    
+    </div>
+  </section>
+
+  <section id="cakes">
+    <h2 class="text-4xl text-white ps-20 pt-20" data-aos="fade-right">💍WEDDING</h2>
+    <div class="grid grid-cols-4 gap-x-8 gap-y-4 px-5 pt-20">
+      <div data-aos="flip-left"><img src="https://cdn.pixabay.com/photo/2019/11/10/11/13/happy-valentines-day-4615557_1280.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="flip-left" data-aos-delay="200"><img src="https://cdn.pixabay.com/photo/2023/05/30/10/18/wedding-8028163_1280.jpg" alt="Pull Me Up Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="flip-left" data-aos-delay="300"><img src="https://cdn.pixabay.com/photo/2023/09/12/11/02/ai-generated-8248592_1280.jpg" alt="Rainbow Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2025/01/28/08/14/wedding-9365096_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="flip-left" data-aos-delay="300"><img src="https://cdn.pixabay.com/photo/2018/04/16/08/36/bridal-bouquet-3323903_1280.jpg" alt="Rainbow Cake" class="w-full  h-[540px] rounded-lg"></div>
+      <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2021/04/12/17/21/wedding-6173363_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[540px] rounded-lg"></div>
+         <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2021/09/06/05/55/love-6600903_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[540px]  rounded-lg"></div>
+     <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2019/02/18/11/28/mehendi-4004294_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[540px]  rounded-lg"></div>
+     <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2019/06/21/09/14/vintage-van-4288994_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[540px]  rounded-lg"></div>
+     <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2016/11/22/19/05/wedding-1850074_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[540px]  rounded-lg"></div>
+          <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2023/05/30/10/10/wedding-8028145_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[540px]  rounded-lg"></div>
+          <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2023/10/22/15/43/woman-8334283_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[540px]  rounded-lg"></div>
+           <div data-aos="flip-left"><img src="https://cdn.pixabay.com/photo/2023/09/26/06/45/bride-8276620_1280.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+            <div data-aos="flip-left"><img src="https://cdn.pixabay.com/photo/2019/04/27/14/00/indian-4160039_1280.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+             <div data-aos="flip-left"><img src="https://cdn.pixabay.com/photo/2024/04/27/01/12/couple-8722786_1280.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+              <div data-aos="flip-left"><img src="https://cdn.pixabay.com/photo/2017/06/17/17/26/wedding-2412827_1280.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+     
+  
+  
+      
+    </div>
+  </section>
+
+  <section id="decorations">
+    <h2 class="text-4xl text-white ps-20 pt-20" data-aos="fade-right">📢CONFERENCES</h2>
+    <div class="grid grid-cols-4 gap-x-8 gap-y-4 px-5 pt-20">
+      <div data-aos="fade-up"><img src="https://cdn.pixabay.com/photo/2015/01/08/18/27/startup-593341_1280.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up" data-aos-delay="100"><img src="https://cdn.pixabay.com/photo/2018/06/15/01/12/taking-notes-3475991_1280.jpg" alt="Pull Me Up Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up" data-aos-delay="200"><img src="https://cdn.pixabay.com/photo/2019/12/18/13/05/right-4703926_1280.jpg" alt="Rainbow Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up" data-aos-delay="300"><img src="https://cdn.pixabay.com/photo/2015/01/08/18/11/laptops-593296_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[340px] rounded-lg"></div>
+
+      <div data-aos="fade-up"><img src="https://cdn.pixabay.com/photo/2024/08/03/10/09/business-8941855_1280.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up" data-aos-delay="100"><img src="https://cdn.pixabay.com/photo/2024/08/03/10/09/business-8941885_1280.jpg" alt="Pull Me Up Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up" data-aos-delay="200"><img src="https://cdn.pixabay.com/photo/2019/12/18/13/05/right-4703925_1280.jpg" alt="Rainbow Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up" data-aos-delay="300"><img src="https://cdn.pixabay.com/photo/2024/08/03/10/09/business-8941891_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[340px] rounded-lg"></div>
+          <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2016/08/15/18/53/speaker-1596210_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[540px]  rounded-lg"></div>
+               <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2024/04/23/12/44/ai-generated-8715094_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[540px]  rounded-lg"></div>
+
+            <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2022/11/02/13/58/meeting-7564972_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[540px]  rounded-lg"></div>
+                    <div data-aos="flip-left" data-aos-delay="400"><img src="https://cdn.pixabay.com/photo/2024/07/24/11/18/meeting-8917742_1280.png" alt="Chocolate Cupcakes" class="w-full h-[540px]  rounded-lg"></div>
+                         
+       <div data-aos="fade-up"><img src="https://cdn.pixabay.com/photo/2024/08/03/10/09/business-8941842_1280.jpg" alt="Birthday Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up" data-aos-delay="100"><img src="https://cdn.pixabay.com/photo/2023/08/07/09/30/business-8174708_1280.jpg" alt="Pull Me Up Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up" data-aos-delay="200"><img src="https://cdn.pixabay.com/photo/2017/01/23/20/28/conference-2003772_1280.jpg" alt="Rainbow Cake" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up" data-aos-delay="300"><img src="https://cdn.pixabay.com/photo/2024/08/03/10/09/business-8941853_1280.jpg" alt="Chocolate Cupcakes" class="w-full h-[340px] rounded-lg"></div>
+    </div>
+  </section>
+
+  <section id="gifts">
+    <h2 class="text-4xl text-white ps-20 pt-20" data-aos="fade-right">🏢CORPORATE EVENTS</h2>
+    <div class="grid grid-cols-4 gap-x-8 gap-y-4 px-5 pt-20">
+      <div data-aos="fade-up-right"><img src="https://cdn.pixabay.com/photo/2016/08/16/09/53/international-conference-1597531_1280.jpg" alt="Gift Box" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up-right" data-aos-delay="100"><img src="https://cdn.pixabay.com/photo/2015/05/31/11/18/table-setting-791149_1280.jpg" alt="Gift Box 2" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up-right" data-aos-delay="200"><img src="https://cdn.pixabay.com/photo/2017/01/14/10/56/people-1979261_1280.jpg" alt="Gift Box 3" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up-right" data-aos-delay="300"><img src="https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_1280.jpg" alt="Gift Box 4" class=" h-[340px] rounded-lg"></div>
+
+      <div data-aos="fade-up-right"><img src="https://cdn.pixabay.com/photo/2015/04/02/20/40/microphone-704255_1280.jpg" alt="Gift Box" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up-right" data-aos-delay="100"><img src="https://cdn.pixabay.com/photo/2019/05/05/17/32/stadium-4181150_1280.jpg "  class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up-right" data-aos-delay="200"><img src="https://cdn.pixabay.com/photo/2017/10/04/14/12/auditorium-2816353_1280.jpg" alt="Gift Box 3" class="w-full h-[340px] rounded-lg"></div>
+      <div data-aos="fade-up-right" data-aos-delay="300"><img src="https://cdn.pixabay.com/photo/2019/02/09/10/55/adults-3984852_1280.jpg" alt="Gift Box 4" class="w-full h-[340px] rounded-lg"></div>
+    </div>
+  </section><br><br>
+<!-- Footer -->
+  <footer class="bg-royal text-royal text-center py-6 border-t border-purple-500">
+    <p>&copy; 2025 Aura Events. All Rights Reserved.</p>
+    <p class="text-sm mt-2 italic text-purple-200">Designed with elegance by Aura Team</p>
+  </footer>
+
+  <!-- AOS init script -->
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+  </body>
+  </html>
